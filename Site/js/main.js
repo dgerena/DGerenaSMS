@@ -1,27 +1,14 @@
-
-var flashReady= function()
+var flashReady=function()
 {
 	//enter all your video functions and workings in here SMARTY
-	var playBtn = document.getElementById("#play").onclick();
+	var playBtn = document.getElementById("play");
 	var stopBtn = document.getElementById("#stop").onclick();
 	var pauseBtn = document.getElementById("#pause").onclick();
 	var recordBtn = document.getElementById("#record").onclick();
 	var volumeBtn = document.getElementById("#volume").onkeydown();
-	playBtn.startPlayback();
-	document.getElementById('play').onclick = function() {
-  alert('click!')
-}
-
-/*
-	function play(Event, click){
-		startPlayback();
-	};
-*/
-
-}
-var flashReady=function()
-{
-	$('button').on('click',function(e)
+	playBtn.onclick(alert('click!'));
+	
+	$('#play').on('click',function(e)
 	{
 		connect('rtmp://localhost/SMSServer')
 	})	
