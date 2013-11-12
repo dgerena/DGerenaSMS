@@ -1,6 +1,18 @@
 /* ==========================================================================
 Damasio Gerena Custom stylings after boilerplate bootstrap
    ========================================================================== */
+ /* resourcess ====== */
+/*
+@font-face {
+ font-family: 'symbols';
+ src: url("Arrows_tfb.eot");  EOT file for IE 
+ font-family: 'symbols';
+ src: url("Arrows_tfb.ttf");  TTF file for CSS3 browsers 
+}
+.play{
+	font-family:'symbols';
+}
+*/
  /* ==== header===== */
  .navbar-brand{
 	 background-image: url(../img/logo.png);
@@ -64,21 +76,47 @@ body{
 	background-color: #e0caac;
 }
 .container{
-	max-width: 960px;	
+	width: 76%;
+	margin-top: 5px;	
 }
     /* ==== video ====*/
 #video-container{
-	width: 640px;
+	clear: both;
+	width: 700px;
 	height: 480px;
 	border-color: #afa7a7;
 	border-width: 18px;
  }
+#higley_wigley{
+	padding: 5px;
+	background-color: grey;
+	border-radius: 8px;
+}
  /* ====buttons====*/
+ #slider-vertical{
+	 display: inline-block;
+	 position: relative;
+	 top:-220px;
+	 margin-bottom: -179px;
+	 left:7px;
+}
+.video-controls{
+	float: left;
+	position: relative;
+	clear: both;
+	top: -40px;
+}
+.video-controls .form-group button{
+	margin-top: 5px;
+}
  .timeline{
+ 	position: relative;
+ 	bottom:5px;
 	 border-radius: 37px;
-	 width: 700px;
+	 width: 674px;
 	 height: 5px;
 	 box-shadow: inset 1px 1px 1px 34px #828080;
+	 margin: 0 13px;
  }
  .play {
    
