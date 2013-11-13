@@ -63,7 +63,6 @@ var flashReady=function()
 			recToggle=true;
 		};
 	});
-	
 };
 var playRec="";
 function connected(success,error){
