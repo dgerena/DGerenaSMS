@@ -15,6 +15,8 @@ Damasio Gerena Custom stylings after boilerplate bootstrap
 */
  /* ==== header===== */
  .navbar-brand{
+ 	 margin-left: 10px;
+ 	 width:90px;
 	 background-image: url(../img/logo.png);
 	 background-repeat: no-repeat;
 	 text-indent: -1000px;

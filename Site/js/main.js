@@ -1,12 +1,11 @@
 var flashReady=function()
 {
 	var dom={
-	
 	//enter all your video functions and workings in here SMARTY
 	playBtn:document.getElementById("play"),
 	stopBtn:document.getElementById("stop"),
 	pauseBtn:document.getElementById("pause"),
-	recordBtn:document.getElementById("record"),
+	recBtn:document.getElementById("record"),
 	volumeBtn:document.getElementById("volume"),
 	micOpt:document.getElementById("microphone"),
 	camOpt:document.getElementById("camera")
@@ -15,6 +14,7 @@ var flashReady=function()
 	function playedOut(){
 		$(dom.playBtn).click(function(e)// play button
 		{
+			playRec="play";
 			e.preventDefault();
 			flash.connect('rtmp://localhost/SMSServer');
 			$(this).unbind();
@@ -33,24 +33,51 @@ var flashReady=function()
 	});
 	$(dom.camOpt).click(function(e){
 		flash.getCameras();
-	});
-	$(dom.micOpt).click(function(e){
-		console.log("herro");
-		var micArr=flash.getMicrophones();
-		console.log(micArr.length);
-		for(var i=0; i<micArr.length;i++){
-			$(dom.micOpt).append('<option>'+micArr[i]+'</option>');
-			console.log("shit");
+		var camArr=flash.getCameras();
+		console.log(camArr.length);
+		for(var i=0; i<camArr.length;i++){
+			$(dom.camOpt).append('<option>'+camArr[i]+'</option>');
 		}
 		$(this).unbind();
 	});
+	$(dom.micOpt).click(function(e){
+		var micArr=flash.getMicrophones();
+		for(var i=0; i<micArr.length;i++){
+			$(dom.micOpt).append('<option>'+micArr[i]+'</option>');
+		}
+		$(this).unbind();
+	});
+	var recToggle=true;
+	$(dom.recBtn).click(function(e){
+		
+		console.log('recToggle',recToggle)
+		if(recToggle){
+			playRec="rec";
+			console.log('connect')
+			flash.connect('rtmp://localhost/SMSServer');
+			console.log("help")
+			recToggle=false;
+		}else{
+			flash.stopRecording();
+			console.log("wtf")
+			recToggle=true;
+		};
+	});
 	
 };
+var playRec="";
 function connected(success,error){
 		if(success){
-			flash.startPlaying("hobbit_vp6.flv");
-			
-		}
+		
+			console.log('playRec',playRec);
+			if(playRec==="rec"){
+				var intNum=1;
+				flash.startRecording("test"+intNum,0,0)	
+			}else{	
+				flash.startPlaying("hobbit_vp6.flv");
+			};
+		};
+		console.log(succes);
 		console.log(error)
 };
 //get mic code
