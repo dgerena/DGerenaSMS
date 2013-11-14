@@ -1,15 +1,18 @@
 var flashReady=function()
 {
+	$('#slider-vertical .ui-slider-handle.ui-state-default.ui-corner-all').attr("id",'handleVol')
 	var dom={
 	//enter all your video functions and workings in here SMARTY
-	playBtn:document.getElementById("play"),
-	stopBtn:document.getElementById("stop"),
-	pauseBtn:document.getElementById("pause"),
-	recBtn:document.getElementById("record"),
-	volumeBtn:document.getElementById("volume"),
-	micOpt:document.getElementById("microphone"),
-	camOpt:document.getElementById("camera")
+		playBtn:document.getElementById("play"),
+		stopBtn:document.getElementById("stop"),
+		pauseBtn:document.getElementById("pause"),
+		recBtn:document.getElementById("record"),
+		volumeBtn:document.getElementById("volume"),
+		micOpt:document.getElementById("microphone"),
+		camOpt:document.getElementById("camera"),
+		volCntrl:document.getElementById("handleVol")
 	}
+
 	playedOut();
 	function playedOut(){
 		$(dom.playBtn).click(function(e)// play button
@@ -53,32 +56,40 @@ var flashReady=function()
 		console.log('recToggle',recToggle)
 		if(recToggle){
 			playRec="rec";
-			console.log('connect')
 			flash.connect('rtmp://localhost/SMSServer');
-			console.log("help")
 			recToggle=false;
 		}else{
 			flash.stopRecording();
-			console.log("wtf")
 			recToggle=true;
 		};
 	});
+	function vollyBear(){
+		console.log("wtf");
+		$('#handleVol').css('bottom',(getVolume()*100)+"%");
+		$('#handleVol').click(function(e){
+				console.log("help");
+				setVolume($("#handleVol").css('bottom')/198)
+		});
+
+	;}
 };
 var playRec="";
 function connected(success,error){
 		if(success){
+
 		
 			console.log('playRec',playRec);
 			if(playRec==="rec"){
 				var intNum=1;
 				flash.startRecording("test"+intNum,0,0)	
-			}else{	
+			}else{
 				flash.startPlaying("hobbit_vp6.flv");
 			};
 		};
 		console.log(succes);
-		console.log(error)
+		console.log(error);
 };
+
 //get mic code
 //getMicrophones()
 //@return microphones -(Array) a list of all available cameras
