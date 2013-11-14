@@ -12,7 +12,7 @@ var flashReady=function()
 		camOpt:document.getElementById("camera"),
 		volCntrl:document.getElementById("handleVol")
 	}
-
+	
 	function playedOut(){
 		$(dom.playBtn).click(function(e)// play button
 		{
@@ -62,17 +62,18 @@ var flashReady=function()
 			recToggle=true;
 		};
 	});
-	function vollyBear(){
-		console.log(getVolume());
-		$('#handleVol').css('bottom',getVolume()*100);
+
+/* 	function vollyBear(){ */
 		$('#handleVol').click(function(e){
-				console.log("help");
-				flash.setVolume($("#handleVol").css('bottom')/198)
+		var btm=e.pageY-$(this).offset().btm;
+		console.log(e.pageY)
+				console.log("help "+$("#handleVol").css('bottom', btm+"%"));
+				flash.setVolume($("#handleVol").css('bottom',btm+"%"))
 		});
 
-	;}
+/* 	}; */
 		playedOut();
-		vollyBear();
+/* 		vollyBear(); */
 };
 var playRec="";
 function connected(success,error){
@@ -85,15 +86,11 @@ function connected(success,error){
 				flash.startRecording("test"+intNum,0,0)	
 			}else{
 				flash.startPlaying("hobbit_vp6.flv");
+				console.log("vol: ",$("#handleVol").css('bottom'));
+				$('#handleVol').css('bottom',(flash.getVolume()*100)+"%");
+				
 			};
 		};
 		console.log(succes);
 		console.log(error);
 };
-
-//get mic code
-//getMicrophones()
-//@return microphones -(Array) a list of all available cameras
-// video 
-//getCameras()
-//@return cameras -(array) a list of all the available cameras
