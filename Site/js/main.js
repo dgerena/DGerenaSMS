@@ -1,6 +1,6 @@
 var flashReady=function()
 {
-	$('#slider-vertical .ui-slider-handle.ui-state-default.ui-corner-all').attr("id",'handleVol')
+	$('#slider-vertical  .ui-slider-handle.ui-state-default.ui-corner-all').attr("id",'handleVol')
 	var dom={
 	//enter all your video functions and workings in here SMARTY
 		playBtn:document.getElementById("play"),
@@ -13,7 +13,6 @@ var flashReady=function()
 		volCntrl:document.getElementById("handleVol")
 	}
 
-	playedOut();
 	function playedOut(){
 		$(dom.playBtn).click(function(e)// play button
 		{
@@ -64,14 +63,16 @@ var flashReady=function()
 		};
 	});
 	function vollyBear(){
-		console.log("wtf");
-		$('#handleVol').css('bottom',(getVolume()*100)+"%");
+		console.log(getVolume());
+		$('#handleVol').css('bottom',getVolume()*100);
 		$('#handleVol').click(function(e){
 				console.log("help");
-				setVolume($("#handleVol").css('bottom')/198)
+				flash.setVolume($("#handleVol").css('bottom')/198)
 		});
 
 	;}
+		playedOut();
+		vollyBear();
 };
 var playRec="";
 function connected(success,error){
