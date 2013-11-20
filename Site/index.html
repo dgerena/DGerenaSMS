@@ -19,21 +19,12 @@
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-simple-login.js'></script>
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        <script>
-		  $(function() {
-		    $( "#slider" ).slider();
-		  });
-		</script>
-        <script>$(function() { $( "#slider-vertical" ).slider({ orientation: "vertical", range: "min", min: 0, max: 100, value: 60, slide: function( event, ui ) {
-		       $( "#amount" ).val( ui.value );
-		      }
-		    });
-		    $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
-		  });
-		 </script>
+   
     </head>
     <body>
 	    <div class="navbar navbar-inverse navbar-fixed-top">
@@ -49,30 +40,14 @@
 	        <div class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
 	            <li class="active"><a class="custom color override" href="#">Home</a></li>
-	            <li><a href="#about">About</a></li>
-	            <li><a href="#contact">Contact</a></li>
-	            <li class="dropdown">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-	              <ul class="dropdown-menu">
-	                <li><a href="#">Action</a></li>
-	                <li><a href="#">Another action</a></li>
-	                <li><a href="#">Something else here</a></li>
 	                <li class="divider"></li>
-	                <li class="dropdown-header">Nav header</li>
-	                <li><a href="#">Separated link</a></li>
-	                <li><a href="#">One more separated link</a></li>
 	              </ul>
 	            </li>
 	          </ul>
-	          <form class="navbar-form navbar-right">
-	            <div class="form-group">
-	              <input type="text" placeholder="Email" class="form-control">
-	            </div>
-	            <div class="form-group">
-	              <input type="password" placeholder="Password" class="form-control">
-	            </div>
-	            <button type="submit" class="btn btn-success">Sign in</button>
-	          </form>
+	          <div class="navbar-form navbar-right">
+	            <button id="twitter" class="btn btn-success">Twitter</button>
+	            <button  id="facebook" class="btn btn-success">Facebook</button>
+	          </div>
 	        </div><!--/.navbar-collapse -->
 	      </div>
 	    </div>
@@ -94,7 +69,7 @@
 		                document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
 		                </script>
 			    	</div>
-				    <div id="slider-vertical"id="volume" style="height: 200px;"></div><!-- volume bar -->
+				    <div id="slider-vertical"id="volume" style="height:100px;"></div><!-- volume bar -->
 					<form class="video-controls">
 					    <div class="form-group">
 			            	<div id='slider' class="timeline" disabled="#"></div>
@@ -132,6 +107,11 @@
 		       </div>
 	      </div>
 	      <hr><!-- section spacer -->
+	      <div class="messages">
+  			    <input type='text' id='nameInput' placeholder='Name'>
+			    <input type='text' id='messageInput' placeholder='Message'>
+		      	<div id='messagesDiv'></div>
+	      </div>
 	      <footer>
         <p>&copy; NaturalGeometry 2013</p>
       </footer>

@@ -98,9 +98,9 @@ body{
  #slider-vertical{
 	 display: inline-block;
 	 position: relative;
-	 top:-220px;
+	 top:-234px;
 	 margin-bottom: -179px;
-	 left:7px;
+	 left:13px;
 }
 .video-controls{
 	float: left;
